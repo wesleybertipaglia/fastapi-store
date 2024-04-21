@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 from src.config.database import get_db
-from src.schemes.auth import SignUP, SignIN
+from src.schemes.auth import SignUP, SignIN, UserResponse
 from src.repository.auth import AuthRepository
 
 router = APIRouter()
@@ -16,5 +16,5 @@ async def sign_in(user: SignIN):
     return AuthRepository(db).sign_in(user)
 
 @router.get('/me')
-async def me(current_user = Depends(AuthRepository(db).get_logged_user)):
+async def me(current_user: UserResponse = Depends(AuthRepository(db).get_logged_user)):
     return current_user

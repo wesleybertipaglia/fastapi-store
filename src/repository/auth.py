@@ -45,7 +45,8 @@ class AuthRepository():
     
     def get_logged_user(self, token: str = Depends(oauth2_scheme)):
         email = Token().verify_token(token)
-        user = self.get_by_email(email)
+        user_data: UserResponse = self.get_by_email(email)
+        user = UserResponse(**user_data.__dict__)
         if not user:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
         return user
