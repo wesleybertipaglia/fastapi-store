@@ -10,7 +10,16 @@ class User(BaseModel):
     class Config:
         orm_mode = True
 
-class UserResponse(BaseModel):
+class UserUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+
+class UserPrivate(BaseModel):
     id: Optional[int] = None
     name: str
     email: str
@@ -18,10 +27,9 @@ class UserResponse(BaseModel):
     class Config:
         orm_mode = True
 
-class UserUpdate(BaseModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-    password: Optional[str] = None
+class UserPublic(BaseModel):
+    id: Optional[int] = None
+    name: str
 
     class Config:
         orm_mode = True
