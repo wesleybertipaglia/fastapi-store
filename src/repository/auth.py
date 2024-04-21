@@ -13,7 +13,8 @@ class AuthRepository():
         self.db = db
 
     def sign_in(self, user: SignIN):
-        stored_user = self.get_by_email(user.email)
+        stored_user = self._get_by_email(user.email)
+        
         if not stored_user:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
         if not Hash.verify(stored_user.password, user.password):
@@ -23,7 +24,7 @@ class AuthRepository():
         return {"access_token": token, "token_type": "bearer"}
     
     def sign_up(self, user: SignUP):
-        if self.get_by_email(user.email):
+        if self._get_by_email(user.email):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
         new_user = UserModel(
@@ -35,18 +36,25 @@ class AuthRepository():
         self.db.add(new_user)
         self.db.commit()
         self.db.refresh(new_user)
+        return new_user
+    
+    def sign_out(self, token: str = Depends(oauth2_scheme)):
+        token = Token().revoke_access_token(token)
+        return {"access_token": token, "token_type": "bearer", "detail": "Token revoked"}     
         
-        token = Token().create_access_token(data={"sub": new_user.email})
-        return {"access_token": token, "token_type": "bearer"}
-    
-    def get_by_email(self, email):
-        user = self.db.query(UserModel).filter(UserModel.email == email).first()
-        return user
-    
-    def get_logged_user(self, token: str = Depends(oauth2_scheme)):
+    def get_current_user(self, token: str = Depends(oauth2_scheme)):
         email = Token().verify_token(token)
-        user_data: UserResponse = self.get_by_email(email)
-        user = UserResponse(**user_data.__dict__)
-        if not user:
+        user_data: UserResponse = self._get_by_email(email)
+
+        if not user_data:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+        user = UserResponse(**user_data.__dict__)
         return user
+    
+    def get_current_user_id(self, token: str = Depends(oauth2_scheme)):
+        user = self.get_current_user(token)
+        return user.id
+    
+    def _get_by_email(self, email):
+        return self.db.query(UserModel).filter(UserModel.email == email).first()        

@@ -7,14 +7,14 @@ from src.repository.auth import AuthRepository
 router = APIRouter()
 db: Session = next(get_db())
 
-@router.post('/signup', status_code=status.HTTP_201_CREATED)
+@router.post('/up', status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 async def sign_up(user: SignUP):
     return AuthRepository(db).sign_up(user)
 
-@router.post('/signin')
+@router.post('/in')
 async def sign_in(user: SignIN):
     return AuthRepository(db).sign_in(user)
 
-@router.get('/me')
-async def me(current_user: UserResponse = Depends(AuthRepository(db).get_logged_user)):
-    return current_user
+@router.post('/out')
+async def sign_out(token: str = Depends(AuthRepository(db).sign_out)):
+    return AuthRepository(db).sign_out(token)
