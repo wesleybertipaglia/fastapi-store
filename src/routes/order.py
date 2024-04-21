@@ -7,22 +7,22 @@ from typing import List
 
 router = APIRouter()
 
-@router.post('/orders', status_code=status.HTTP_201_CREATED, response_model=OrderResponse)
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=OrderResponse)
 def create_order(order: Order, db: Session = Depends(get_db)):
     return OrderRepository(db).create(order)
 
-@router.get('/orders', response_model=List[OrderResponse])
+@router.get('/', response_model=List[OrderResponse])
 def list_orders(db: Session = Depends(get_db)):
     return OrderRepository(db).list()
 
-@router.get('/orders/{id}', response_model=OrderResponse)
+@router.get('/{id}', response_model=OrderResponse)
 def get_order(id: str, db: Session = Depends(get_db)):
     return OrderRepository(db).get(id)
 
-@router.put('/orders/{id}', response_model=OrderResponse)
+@router.put('/{id}', response_model=OrderResponse)
 def update_order(id: int, order: OrderUpdate, db: Session = Depends(get_db)):
     return OrderRepository(db).update(id, order)
 
-@router.delete('/orders/{id}')
+@router.delete('/{id}')
 def delete_order(id: str, db: Session = Depends(get_db)):
     return OrderRepository(db).delete(id)
