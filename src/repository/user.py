@@ -23,7 +23,6 @@ class UserRepository():
         self.db.refresh(new_user)
         return new_user
     
-
     def list(self):
         return self.db.query(UserModel).all()
 
