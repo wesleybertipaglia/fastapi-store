@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-from src.schemes.order import Order, OrderUpdate
+from src.schemes.order import OrderCreate, OrderUpdate
 from src.models.order import OrderModel
 from src.repository.product import ProductRepository
 
@@ -8,11 +8,11 @@ class OrderRepository():
     def __init__(self, db: Session):
         self.db = db
 
-    def create(self, order: Order):
-        stored_product = ProductRepository(self.db).get(order.product_id)
+    def create_order(self, current_user_id: int, order: OrderCreate):
+        stored_product = self._get_product(order.product_id)
         
         new_order = OrderModel(
-            user_id=order.user_id,
+            user_id=current_user_id,
             product_id=order.product_id,
             quantity=order.quantity,
             total=order.quantity * stored_product.price
@@ -23,27 +23,38 @@ class OrderRepository():
         self.db.refresh(new_order)
         return new_order
 
-    def list(self):
-        return self.db.query(OrderModel).all()
+    def list_orders(self, current_user_id: int):
+        return self.db.query(OrderModel).filter(OrderModel.user_id == current_user_id).all()
 
-    def get(self, id):
-        order = self.db.query(OrderModel).filter(OrderModel.id == id).first()        
-        if not order:
+    def get_order(self, id:int, current_user_id: int):
+        stored_order = self.db.query(OrderModel).filter(OrderModel.id == id).first()
+
+        if not stored_order:
             raise HTTPException(status_code=404, detail="Order not found")
-        return order
+        if stored_order.user_id != current_user_id:
+            raise HTTPException(status_code=403, detail="You don't have permission to update this order")                    
+        
+        return stored_order
 
-    def update(self, id:int, order: OrderUpdate):
-        stored_order = self.get(id)
+    def update_order(self, id:int, current_user_id: int, order: OrderUpdate):
+        stored_order = self.get_order(id=id, current_user_id=current_user_id)
+        stored_product = self._get_product(stored_order.product_id)
+        stored_order.total = order.quantity * stored_product.price
 
         for field in order.model_dump(exclude_unset=True):
-            setattr(stored_order, field, getattr(order, field))
+            setattr(stored_order, field, getattr(order, field))        
 
         self.db.commit()
         self.db.refresh(stored_order)
         return stored_order
 
-    def delete(self, id):
-        order = self.get(id)
-        self.db.delete(order)
+    def delete_order(self, current_user_id: int, id):
+        stored_order = self.get_order(id=id, current_user_id=current_user_id)
+
+        self.db.delete(stored_order)
         self.db.commit()
         return {"detail": "Order deleted"}
+    
+    def _get_product(self, product_id: int):
+        product = ProductRepository(self.db).get(product_id)
+        return product
