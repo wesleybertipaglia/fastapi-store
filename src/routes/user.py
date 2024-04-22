@@ -28,4 +28,4 @@ async def get_user(id: str, db: Session = Depends(get_db)):
 
 @router.get('/{id}/products', status_code=status.HTTP_200_OK, response_model=List[ProductPublic])
 async def get_user_products(id: str, db: Session = Depends(get_db)):
-    return UserRepository(db).get_products(id)
+    return UserRepository(db).get_user_products(id)

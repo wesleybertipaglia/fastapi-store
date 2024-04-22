@@ -8,9 +8,24 @@ from src.providers.hash import Hash
 class UserRepository():
     def __init__(self, db: Session):
         self.db = db
+    
+    def list_users(self):
+        return self.db.query(UserModel).all()
+
+    def get_user(self, id: int):
+        stored_user = self.db.query(UserModel).filter(UserModel.id == id).first()
+        if not stored_user:
+            raise HTTPException(status_code=404, detail="User not found")
+        return stored_user
+    
+    def get_user_by_email(self, email: str):
+        return self.db.query(UserModel).filter(UserModel.email == email).first()
+    
+    def get_user_products(self, id):
+        return self.db.query(ProductModel).filter(ProductModel.user_id == id).all()
 
     def create_user(self, user: User):
-        if self.get_by_email(user.email):
+        if self.get_user_by_email(user.email):
             raise HTTPException(status_code=400, detail="Email already registered")
 
         new_user = UserModel(
@@ -24,19 +39,7 @@ class UserRepository():
         self.db.refresh(new_user)
         return new_user
     
-    def list_users(self):
-        return self.db.query(UserModel).all()
-
-    def get_user(self, id):
-        stored_user = self.db.query(UserModel).filter(UserModel.id == id).first()
-        if not stored_user:
-            raise HTTPException(status_code=404, detail="User not found")
-        return stored_user
-    
-    def get_user_by_email(self, email):
-        return self.db.query(UserModel).filter(UserModel.email == email).first()
-
-    def update(self, id:int, user: UserUpdate):
+    def update_user(self, id: int, user: UserUpdate):
         stored_user = self.get_user(id)
 
         if user.email != stored_user.email:
@@ -53,11 +56,8 @@ class UserRepository():
         self.db.refresh(stored_user)
         return stored_user
 
-    def delete(self, id):        
+    def delete_user(self, id):        
         stored_user = self.get_user(id)
         self.db.delete(stored_user)
         self.db.commit()
-        return {"detail": "User deleted"}
-    
-    def get_products(self, id):
-        return self.db.query(ProductModel).filter(ProductModel.user_id == id).all()
+        return {"detail": "User deleted"}    
