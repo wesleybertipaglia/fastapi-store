@@ -18,7 +18,6 @@ class UserUpdate(BaseModel):
     class Config:
         orm_mode = True
 
-
 class UserPrivate(BaseModel):
     id: Optional[int] = None
     name: str

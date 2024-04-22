@@ -9,14 +9,6 @@ from typing import List
 router = APIRouter()
 db: Session = next(get_db())
 
-# improvements
-    # change id to uuid
-    # implement stock
-    # implement category
-    # implement tags
-    # implement images
-    # implement reviews and rating
-
 @router.get('/', response_model=List[ProductPublic])
 def list_products(db: Session = Depends(get_db)):
     return ProductRepository(db).list_products()

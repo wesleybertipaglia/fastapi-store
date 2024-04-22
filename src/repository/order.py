@@ -8,11 +8,24 @@ class OrderRepository():
     def __init__(self, db: Session):
         self.db = db
 
-    def create_order(self, current_user_id: int, order: OrderCreate):
+    def list_orders(self, user_id: int):
+        return self.db.query(OrderModel).filter(OrderModel.user_id == user_id).all()
+
+    def get_order(self, id:int, user_id: int):
+        stored_order = self.db.query(OrderModel).filter(OrderModel.id == id).first()
+
+        if not stored_order:
+            raise HTTPException(status_code=404, detail="Order not found")
+        if stored_order.user_id != user_id:
+            raise HTTPException(status_code=403, detail="You don't have permission to update this order")                    
+        
+        return stored_order
+    
+    def create_order(self, user_id: int, order: OrderCreate):
         stored_product = self._get_product(order.product_id)
         
         new_order = OrderModel(
-            user_id=current_user_id,
+            user_id=user_id,
             product_id=order.product_id,
             quantity=order.quantity,
             total=order.quantity * stored_product.price
@@ -23,21 +36,8 @@ class OrderRepository():
         self.db.refresh(new_order)
         return new_order
 
-    def list_orders(self, current_user_id: int):
-        return self.db.query(OrderModel).filter(OrderModel.user_id == current_user_id).all()
-
-    def get_order(self, id:int, current_user_id: int):
-        stored_order = self.db.query(OrderModel).filter(OrderModel.id == id).first()
-
-        if not stored_order:
-            raise HTTPException(status_code=404, detail="Order not found")
-        if stored_order.user_id != current_user_id:
-            raise HTTPException(status_code=403, detail="You don't have permission to update this order")                    
-        
-        return stored_order
-
-    def update_order(self, id:int, current_user_id: int, order: OrderUpdate):
-        stored_order = self.get_order(id=id, current_user_id=current_user_id)
+    def update_order(self, id:int, user_id: int, order: OrderUpdate):
+        stored_order = self.get_order(id=id, user_id=user_id)
         stored_product = self._get_product(stored_order.product_id)
         stored_order.total = order.quantity * stored_product.price
 
@@ -48,8 +48,8 @@ class OrderRepository():
         self.db.refresh(stored_order)
         return stored_order
 
-    def delete_order(self, current_user_id: int, id):
-        stored_order = self.get_order(id=id, current_user_id=current_user_id)
+    def delete_order(self, user_id: int, id):
+        stored_order = self.get_order(id=id, user_id=user_id)
 
         self.db.delete(stored_order)
         self.db.commit()
