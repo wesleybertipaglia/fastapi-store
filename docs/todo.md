@@ -10,12 +10,6 @@ Some things to do:
 - [ ] Add notifications to users
 - [ ] Add pagination, limit, offset to endpoints
 
-## Scripts
-- [ ] Make a script to generate / apply migrations
-- [ ] Make a script to rollback the migrations
-- [ ] Make a script to upgrade / downgradethe database
-- [ ] Make a script to show the current revision
-
 ## Users
 - [ ] Add a profile picture
 - [ ] Implement roles and permissions to users
