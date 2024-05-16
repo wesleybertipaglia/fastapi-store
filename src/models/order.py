@@ -1,10 +1,12 @@
-from sqlalchemy import Integer, Float, ForeignKey, String, Boolean
+from sqlalchemy import Integer, Float, ForeignKey, String
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from src.config.database import Base
+from uuid import uuid4
 
 class OrderModel(Base):
     __tablename__ = 'orders'
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    
+    id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=str(uuid4()))
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'))
     product_id: Mapped[int] = mapped_column(Integer, ForeignKey('products.id'))
     quantity: Mapped[int] = mapped_column(Integer, nullable=False)
