@@ -1,5 +1,7 @@
 # 🪧 Endpoints
 
+The API has the following endpoints:
+
 ### Users
 
 | Route                  | Action                       |

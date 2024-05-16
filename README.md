@@ -63,20 +63,22 @@ All commands are run from the root of the project, from a terminal:
 To know more about the commands, check the [commands.md](/docs/commands.md) file.
 
 ## 🪧 Endpoints
-To access the API documentation, run the application and go to the following URL:
+The API has the following endpoints:
+- `/auth`: Sign-up and Sign-in
+- `/profile`: Read, Update, Delete
+- `/users`: Read
+- `/products`: Create, Read, Update, Delete
+- `/orders`: Create, Read, Update, Delete
+
+To know more about the endpoints, check the [endpoints.md](/docs/endpoints.md) file, or access the API documentation in the following URL:
 [localhost:8000/docs](http://localhost:8000/docs)
 
-Or you can see the documentation in [endpoints.md](/docs/endpoints.md)
-
 ## 🧩 Tech Stack
+- [Python](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
-- [Pydantic](https://pydantic-docs.helpmanual.io/)
-- [Passlib](https://passlib.readthedocs.io/en/stable/)
-- [Pytest](https://docs.pytest.org/en/)
-- [Alembic](https://alembic.sqlalchemy.org/)
-- [SQLAlchemy](https://www.sqlalchemy.org/)
-- [SQLite](https://www.sqlite.org/index.html)
-- [Swagger UI](https://swagger.io/tools/swagger-ui/)
+- [PostgreSQL](https://www.postgresql.org/) and [Adminer](https://www.adminer.org/)
+
+To know more about the tech stack, check the [tech-stack.md](/docs/tech-stack.md) file.
 
 ## ☑️ Cheklist
 - [x] Authentication
