@@ -1,40 +1,85 @@
-# Simple Store API
-This is a simple API for managing a store. It allows you to perform basic CRUD operations on products and orders.
+# 🏪 Store API
+A Restful API for managing an online store, built using the FastAPI framework.
 
-## Installation
+### Features:
 
-1. Clone the repository: `git clone https://github.com/wesleybertipaglia/simple-store-api.git`
-2. Install dependencies: `make init & make setup`
+- ✅ Sign-up & Sign-in
+- ✅ Create and Customize your profile
+- ✅ Create, Update, Delete your own products
+- ✅ Create, Read, Delete your own orders
+- ✅ Update your own orders until it's paid
+- ✅ Search and filter products
+- ✅ Make and track your orders
+- ✅ Rate and review products
+- ✅ Get notifications about your orders
 
-## Usage
+## 📚 Table of Contents
+- [Getting Started](#-getting-started)
+- [Commands](#-commands)
+- [Endpoints](#-endpoints)
+- [Tech Stack](#-tech-stack)
+- [License](#-license)
 
-1. Start the server: `make run`
-2. Access the API at: `http://localhost:8000`
+To know more about the project structure, check the [structure.md](/docs/structure.md) file.
 
-## Endpoints
+## 🤖 Getting Started
+1. Clone the repository
+```bash
+git clone https://github.com/wesleybertipaglia/store-api.git
+```
 
-### Users
+2. Initialize and Activate the virtual environment
+```bash
+Make init
+source venv/bin/activate
+```
 
-### Products
+3. Install the dependencies and init the alembic
+```bash
+Make setup
+```
 
-- `GET /products`: Get all products
-- `GET /products/:id`: Get a specific product by ID
-- `POST /products`: Create a new product
-- `PUT /products/:id`: Update a product by ID
-- `DELETE /products/:id`: Delete a product by ID
+4. Run the application
+```bash
+Make run
+```
 
-### Orders
+## 🧞 Commands
 
-- `GET /orders`: Get all orders
-- `GET /orders/:id`: Get a specific order by ID
-- `POST /orders`: Create a new order
-- `PUT /orders/:id`: Update an order by ID
-- `DELETE /orders/:id`: Delete an order by ID
+All commands are run from the root of the project, from a terminal:
 
-## Contributing
+| Command                    | Action                                    |
+| :------------------------  | :---------------------------------------- |
+| `Make init`                | Initialize the virtual enviroment         |
+| `source venv/bin/activate` | Activate the virtual enviroment           |
+| `Make setup`               | Install dependencies and init the alembic |
+| `Make freeze`              | Update the dependencies                   |
+| `Make run`                 | Starts the application                    |
+| `Make alembic-revision`    | Make an alembic revision                  |
+| `Make alembic-upgrade`     | Make an alembic upgrade                   |
 
-Contributions are welcome! Please follow the [contribution guidelines](CONTRIBUTING.md).
+To know more about the commands, check the [commands.md](/docs/commands.md) file.
 
-## License
+## 🪧 Endpoints
+To access the API documentation, run the application and go to the following URL:
+[localhost:8000/docs](http://localhost:8000/docs)
 
-This project is licensed under the [MIT License](LICENSE).
+Or you can see the documentation in [endpoints.md](/docs/endpoints.md)
+
+## 🧩 Tech Stack
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+- [Alembic](https://alembic.sqlalchemy.org/)
+- [Pydantic](https://pydantic-docs.helpmanual.io/)
+- [Passlib](https://passlib.readthedocs.io/en/stable/)
+- [Pytest](https://docs.pytest.org/en/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Swagger UI](https://swagger.io/tools/swagger-ui/)
+
+## 📜 License
+
+This repository is licensed under the [MIT]. See the [LICENSE](LICENSE) file for details.
+
+[Back to top](#store-api)
