@@ -68,14 +68,12 @@ Or you can see the documentation in [endpoints.md](/docs/endpoints.md)
 
 ## 🧩 Tech Stack
 - [FastAPI](https://fastapi.tiangolo.com/)
-- [SQLAlchemy](https://www.sqlalchemy.org/)
-- [Alembic](https://alembic.sqlalchemy.org/)
 - [Pydantic](https://pydantic-docs.helpmanual.io/)
 - [Passlib](https://passlib.readthedocs.io/en/stable/)
 - [Pytest](https://docs.pytest.org/en/)
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [Alembic](https://alembic.sqlalchemy.org/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+- [SQLite](https://www.sqlite.org/index.html)
 - [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
 ## 📜 License
