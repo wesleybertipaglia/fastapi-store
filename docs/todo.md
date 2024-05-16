@@ -1,4 +1,7 @@
-# Project TODO
+# ☑️ TODO
+
+Some things to do:
+
 - [ ] Configure Alembic for migrations
 - [ ] Create migration for tables `users`, `products`, `orders`
 - [ ] Change database from SQLite to PostgreSQL
@@ -14,7 +17,6 @@
 - [ ] Make a script to show the current revision
 
 ## Users
-- [ ] Change ids from int to uuid
 - [ ] Add a profile picture
 - [ ] Implement roles and permissions to users
 - [ ] Add a username
@@ -23,13 +25,11 @@
 - [ ] Add contact information
 
 ## Products
-- [ ] Change ids from int to uuid
 - [ ] Add stock, category, tags, images to products
 - [ ] Implement reviews and rating to products
 - [ ] Implement search and filter to products
 
 ## Orders
-- [ ] Change ids from int to uuid
 - [ ] Implement payment methods
 - [ ] Add coupon, tax, fee, discount
 - [ ] Implement order status, payment, items
