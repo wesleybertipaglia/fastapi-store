@@ -16,7 +16,6 @@ A Restful API for managing an online store, built using the FastAPI framework.
 ## 📚 Table of Contents
 - [Getting Started](#getting-started)
 - [Commands](#-commands)
-- [Endpoints](#-endpoints)
 - [Tech Stack](#-tech-stack)
 - [License](#-license)
 - [Checklist](#-checklist)
