@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class SignUP(BaseModel):
-    id: Optional[int] = None
+    id: Optional[str] = None
     name: str
     email: str
     password: str
@@ -18,7 +18,7 @@ class SignIN(BaseModel):
         orm_mode = True
 
 class UserResponse(BaseModel):
-    id: int
+    id: str
     name: str
     email: str
 

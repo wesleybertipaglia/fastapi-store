@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class User(BaseModel):
-    id: Optional[int] = None
+    id: Optional[str] = None
     name: str
     email: str
     password: str
@@ -19,7 +19,7 @@ class UserUpdate(BaseModel):
         orm_mode = True
 
 class UserPrivate(BaseModel):
-    id: Optional[int] = None
+    id: Optional[str] = None
     name: str
     email: str
 
@@ -27,7 +27,7 @@ class UserPrivate(BaseModel):
         orm_mode = True
 
 class UserPublic(BaseModel):
-    id: Optional[int] = None
+    id: Optional[str] = None
     name: str
 
     class Config:
