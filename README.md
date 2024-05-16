@@ -14,7 +14,7 @@ A Restful API for managing an online store, built using the FastAPI framework.
 - ✅ Get notifications about your orders
 
 ## 📚 Table of Contents
-- [Getting Started](#-getting-started)
+- [Getting Started](#getting-started)
 - [Commands](#-commands)
 - [Endpoints](#-endpoints)
 - [Tech Stack](#-tech-stack)
@@ -76,7 +76,7 @@ To know more about the endpoints, check the [endpoints.md](/docs/endpoints.md) f
 ## 🧩 Tech Stack
 - [Python](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
-- [PostgreSQL](https://www.postgresql.org/) and [Adminer](https://www.adminer.org/)
+- [SQLite](https://www.sqlite.org/)
 
 To know more about the tech stack, check the [tech-stack.md](/docs/tech-stack.md) file.
 

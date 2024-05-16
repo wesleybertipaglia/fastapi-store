@@ -24,6 +24,7 @@ Inside this project, you'll see the following folders and files:
 ```
 
 There are several key components in this project:
+
 - The `alembic` folder contains the database migration scripts. 
 - The `src` folder contains the source code of the API. 
     - The `config` folder contains the configuration files. 
