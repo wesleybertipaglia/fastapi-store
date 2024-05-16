@@ -93,23 +93,6 @@ The following checklist can be used to track the project progress:
 - [ ] Deploy
 - [ ] Monitoring
 
-## 🚀 Improvements
-
-The following improvements can be made to the project:
-
-- [ ] Add avatar, username, bio to profiles
-- [ ] Implement payment methods
-- [ ] Change ids from int to uuid
-- [ ] Add address, contact to users
-- [ ] Implement roles and permissions to users
-- [ ] Add stock, category, tags, images to products
-- [ ] Implement reviews and rating to products
-- [ ] Add coupon, tax, fee, discount to orders
-- [ ] Implement order status, payment, items
-- [ ] Add notifications to users
-- [ ] Implement search and filter to products
-- [ ] Add pagination, limit, offset to endpoints
-
 ## 📜 License
 
 This repository is licensed under the [MIT]. See the [LICENSE](LICENSE) file for details.
