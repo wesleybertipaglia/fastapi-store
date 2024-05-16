@@ -81,6 +81,9 @@ To know more about the endpoints, check the [endpoints.md](/docs/endpoints.md) f
 To know more about the tech stack, check the [tech-stack.md](/docs/tech-stack.md) file.
 
 ## ☑️ Cheklist
+
+The following checklist can be used to track the project progress:
+
 - [x] Authentication
 - [x] Authorization
 - [x] Documentation
@@ -91,6 +94,9 @@ To know more about the tech stack, check the [tech-stack.md](/docs/tech-stack.md
 - [ ] Monitoring
 
 ## 🚀 Improvements
+
+The following improvements can be made to the project:
+
 - [ ] Add avatar, username, bio to profiles
 - [ ] Implement payment methods
 - [ ] Change ids from int to uuid
