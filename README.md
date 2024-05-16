@@ -78,7 +78,7 @@ To know more about the endpoints, check the [endpoints.md](/docs/endpoints.md) f
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [SQLite](https://www.sqlite.org/)
 
-To know more about the tech stack, check the [tech-stack.md](/docs/tech-stack.md) file.
+To know more about the tech stack, check the [stack.md](/docs/stack.md) file.
 
 ## ☑️ Cheklist
 
