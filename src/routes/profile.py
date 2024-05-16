@@ -13,9 +13,9 @@ async def profile(current_user: UserPrivate = Depends(AuthRepository(db).get_cur
     return current_user
 
 @router.put('/update', response_model=UserPrivate)
-async def update(updated_user: UserUpdate, current_user_id: int = Depends(AuthRepository(db).get_current_user_id)):
+async def update(updated_user: UserUpdate, current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
     return UserRepository(db).update_user(id=current_user_id, user=updated_user)
 
 @router.delete('/delete')
-async def delete(current_user_id: int = Depends(AuthRepository(db).get_current_user_id)):
+async def delete(current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
     return UserRepository(db).delete_user(current_user_id)

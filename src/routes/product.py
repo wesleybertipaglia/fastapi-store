@@ -18,13 +18,13 @@ def get_product(id: str, db: Session = Depends(get_db)):
     return ProductRepository(db).get_product(id)
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=ProductPrivate)
-def create_product(product: Product, db: Session = Depends(get_db), current_user_id: int = Depends(AuthRepository(db).get_current_user_id)):
+def create_product(product: Product, db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
     return ProductRepository(db).create_product(user_id=current_user_id, product=product)
 
 @router.put('/{id}', response_model=ProductPrivate)
-def update_product(id: int, product: ProductUpdate, db: Session = Depends(get_db), current_user_id: int = Depends(AuthRepository(db).get_current_user_id)):
+def update_product(id: str, product: ProductUpdate, db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
     return ProductRepository(db).update_product(id=id, user_id=current_user_id, product=product)
 
 @router.delete('/{id}')
-def delete_product(id: str, db: Session = Depends(get_db), current_user_id: int = Depends(AuthRepository(db).get_current_user_id)):
+def delete_product(id: str, db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
     return ProductRepository(db).delete_product(id=id, user_id=current_user_id)
