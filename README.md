@@ -19,6 +19,8 @@ A Restful API for managing an online store, built using the FastAPI framework.
 - [Endpoints](#-endpoints)
 - [Tech Stack](#-tech-stack)
 - [License](#-license)
+- [Checklist](#-checklist)
+- [Improvements](#-improvements)
 
 To know more about the project structure, check the [structure.md](/docs/structure.md) file.
 
@@ -75,6 +77,30 @@ Or you can see the documentation in [endpoints.md](/docs/endpoints.md)
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 - [SQLite](https://www.sqlite.org/index.html)
 - [Swagger UI](https://swagger.io/tools/swagger-ui/)
+
+## ☑️ Cheklist
+- [x] Authentication
+- [x] Authorization
+- [x] Documentation
+- [ ] Tests
+- [ ] Docker
+- [ ] CI/CD
+- [ ] Deploy
+- [ ] Monitoring
+
+## 🚀 Improvements
+- [ ] Add avatar, username, bio to profiles
+- [ ] Implement payment methods
+- [ ] Change ids from int to uuid
+- [ ] Add address, contact to users
+- [ ] Implement roles and permissions to users
+- [ ] Add stock, category, tags, images to products
+- [ ] Implement reviews and rating to products
+- [ ] Add coupon, tax, fee, discount to orders
+- [ ] Implement order status, payment, items
+- [ ] Add notifications to users
+- [ ] Implement search and filter to products
+- [ ] Add pagination, limit, offset to endpoints
 
 ## 📜 License
 
