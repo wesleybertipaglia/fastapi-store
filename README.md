@@ -20,7 +20,6 @@ A Restful API for managing an online store, built using the FastAPI framework.
 - [Tech Stack](#-tech-stack)
 - [License](#-license)
 - [Checklist](#-checklist)
-- [Improvements](#-improvements)
 
 To know more about the project structure, check the [structure.md](/docs/structure.md) file.
 
