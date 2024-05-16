@@ -10,7 +10,7 @@ class ProductRepository():
     def list_products(self):
         return self.db.query(ProductModel).all()
 
-    def get_product(self, id: int):
+    def get_product(self, id: str):
         product = self.db.query(ProductModel).filter(ProductModel.id == id).first()
 
         if not product:
@@ -18,7 +18,7 @@ class ProductRepository():
         
         return product
 
-    def create_product(self, user_id: int, product: Product):
+    def create_product(self, user_id: str, product: Product):
         new_product = ProductModel(
             name=product.name,
             description=product.description,
@@ -32,7 +32,7 @@ class ProductRepository():
         self.db.refresh(new_product)
         return new_product
     
-    def update_product(self, id: int, user_id: int, product: ProductUpdate):
+    def update_product(self, id: str, user_id: str, product: ProductUpdate):
         stored_product = self.get_product(id)
 
         if stored_product.user_id != user_id:
@@ -45,7 +45,7 @@ class ProductRepository():
         self.db.refresh(stored_product)
         return stored_product
 
-    def delete_product(self, id: int, user_id: int):
+    def delete_product(self, id: str, user_id: str):
         stored_product = self.get_product(id)
         
         if stored_product.user_id != user_id:

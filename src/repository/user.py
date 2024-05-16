@@ -12,7 +12,7 @@ class UserRepository():
     def list_users(self):
         return self.db.query(UserModel).all()
 
-    def get_user(self, id: int):
+    def get_user(self, id: str):
         stored_user = self.db.query(UserModel).filter(UserModel.id == id).first()
         if not stored_user:
             raise HTTPException(status_code=404, detail="User not found")
@@ -21,7 +21,7 @@ class UserRepository():
     def get_user_by_email(self, email: str):
         return self.db.query(UserModel).filter(UserModel.email == email).first()
     
-    def get_user_products(self, id):
+    def get_user_products(self, id: str):
         return self.db.query(ProductModel).filter(ProductModel.user_id == id).all()
 
     def create_user(self, user: User):
@@ -39,7 +39,7 @@ class UserRepository():
         self.db.refresh(new_user)
         return new_user
     
-    def update_user(self, id: int, user: UserUpdate):
+    def update_user(self, id: str, user: UserUpdate):
         stored_user = self.get_user(id)
 
         if user.email != stored_user.email:
@@ -56,7 +56,7 @@ class UserRepository():
         self.db.refresh(stored_user)
         return stored_user
 
-    def delete_user(self, id):        
+    def delete_user(self, id: str):        
         stored_user = self.get_user(id)
         self.db.delete(stored_user)
         self.db.commit()
