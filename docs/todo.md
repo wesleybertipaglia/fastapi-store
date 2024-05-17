@@ -2,8 +2,6 @@
 
 Some things to do:
 
-- [ ] Configure Alembic for migrations
-- [ ] Create migration for tables `users`, `products`, `orders`
 - [ ] Change database from SQLite to PostgreSQL
 - [ ] Setup Docker and Docker Compose
 - [ ] Create tests for the application
@@ -25,5 +23,7 @@ Some things to do:
 
 ## Orders
 - [ ] Implement payment methods
-- [ ] Add coupon, tax, fee, discount
-- [ ] Implement order status, payment, items
+- [ ] Add discont cupon, promotion
+- [ ] tax, fee, shipping, total
+- [ ] Implement order status
+- [ ] Implement items in order

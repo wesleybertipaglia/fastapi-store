@@ -6,10 +6,10 @@ from uuid import uuid4
 class UserModel (Base):
     __tablename__ = 'users'
     
-    id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=str(uuid4()))
+    id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
     name: Mapped[str] = mapped_column(String(50))
     email: Mapped[str] = mapped_column(String(100))
     password: Mapped[str] = mapped_column(String(100))
 
-    products: Mapped['ProductModel'] = relationship(back_populates='user', lazy='selectin')
-    orders: Mapped['OrderModel'] = relationship(back_populates='user', lazy='selectin')
+    products: Mapped['ProductModel'] = relationship('ProductModel', back_populates='user')
+    orders: Mapped['OrderModel'] = relationship('OrderModel', back_populates='user')
