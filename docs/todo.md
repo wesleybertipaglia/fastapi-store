@@ -3,7 +3,6 @@
 Some things to do:
 
 - [ ] Change database from SQLite to PostgreSQL
-- [ ] Setup Docker and Docker Compose
 - [ ] Create tests for the application
 - [ ] Add notifications to users
 - [ ] Add pagination, limit, offset to endpoints
