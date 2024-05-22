@@ -24,7 +24,6 @@ docker-compose-up:
 docker-compose-down:
 	@docker compose down
 
-
 # Alembic
 alembic-init:
 	@alembic init alembic
