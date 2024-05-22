@@ -10,8 +10,8 @@ router = APIRouter()
 db: Session = next(get_db())
 
 @router.get('/', response_model=List[ProductPublic])
-def list_products(db: Session = Depends(get_db)):
-    return ProductRepository(db).list_products()
+def list_products(db: Session = Depends(get_db), skip: int = 0, limit: int = 10):
+    return ProductRepository(db).list_products(skip=skip, limit=limit)
 
 @router.get('/{id}', response_model=ProductPublic)
 def get_product(id: str, db: Session = Depends(get_db)):

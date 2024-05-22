@@ -11,8 +11,8 @@ router = APIRouter()
 db: Session = next(get_db())
 
 @router.get('/', status_code=status.HTTP_200_OK, response_model=List[UserPublic])
-async def list_users(db: Session = Depends(get_db)):
-    return UserRepository(db).list_users()
+async def list_users(db: Session = Depends(get_db), skip: int = 0, limit: int = 10):
+    return UserRepository(db).list_users(skip=skip, limit=limit)
 
 @router.get('/{id}', status_code=status.HTTP_200_OK, response_model=Profile)
 async def get_user(id: str, db: Session = Depends(get_db)):

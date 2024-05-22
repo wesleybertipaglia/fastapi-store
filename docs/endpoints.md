@@ -40,7 +40,7 @@ The API has the following endpoints:
 
 | Route                        | Action                                  |
 | :--------------------------- | :-------------------------------------- |
-| `GET /orders`                | Get all your orders                     |
+| `GET /orders/:filters`       | Get all your orders                     |
 | `GET /orders/:id`            | Get a specific order by ID              |
 | `POST /orders`               | Create a new order                      |
 | `PUT /orders/:id`            | Update a order by ID                    |

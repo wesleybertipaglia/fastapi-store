@@ -11,8 +11,8 @@ class UserRepository():
     def __init__(self, db: Session):
         self.db = db
     
-    def list_users(self):
-        return self.db.query(UserModel).all()
+    def list_users(self, skip: int, limit: int):
+        return self.db.query(UserModel).offset(skip).limit(limit).all()
 
     def get_user(self, id: str):
         stored_user = self.db.query(UserModel).filter(UserModel.id == id).first()

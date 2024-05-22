@@ -10,8 +10,8 @@ router = APIRouter()
 db: Session = next(get_db())
 
 @router.get('/', response_model=List[Order])
-def list_orders(db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):
-    return OrderRepository(db).list_orders(current_user_id)
+def list_orders(db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id), skip: int = 0, limit: int = 0):
+    return OrderRepository(db).list_orders(current_user_id, skip=skip, limit=limit)
 
 @router.get('/{id}', response_model=Order)
 def get_order(id: str, db: Session = Depends(get_db), current_user_id: str = Depends(AuthRepository(db).get_current_user_id)):

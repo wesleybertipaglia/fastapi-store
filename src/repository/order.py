@@ -8,8 +8,8 @@ class OrderRepository():
     def __init__(self, db: Session):
         self.db = db
 
-    def list_orders(self, user_id: str):
-        return self.db.query(OrderModel).filter(OrderModel.user_id == user_id).all()
+    def list_orders(self, user_id: str, skip: int, limit: int):
+        return self.db.query(OrderModel).filter(OrderModel.user_id == user_id).offset(skip).limit(limit).all()
 
     def get_order(self, id: str, user_id: str):
         stored_order = self.db.query(OrderModel).filter(OrderModel.id == id).first()

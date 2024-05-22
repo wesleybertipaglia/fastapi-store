@@ -7,8 +7,8 @@ class ProductRepository():
     def __init__(self, db: Session):
         self.db = db
 
-    def list_products(self):
-        return self.db.query(ProductModel).all()
+    def list_products(self, skip: int, limit: int):
+        return self.db.query(ProductModel).offset(skip).limit(limit).all()
 
     def get_product(self, id: str):
         product = self.db.query(ProductModel).filter(ProductModel.id == id).first()
@@ -22,8 +22,10 @@ class ProductRepository():
         new_product = ProductModel(
             name=product.name,
             description=product.description,
+            image_url=product.image_url,
             price=product.price,
             available=product.available,
+            stock=product.stock,
             user_id=user_id
         )
 
