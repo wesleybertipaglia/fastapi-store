@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
+from typing import List
 from src.config.database import get_db
-from src.schemes.user import UserPublic
+from src.schemes.user import UserPublic, UserProfile
 from src.repository.user import UserRepository
 from src.schemes.product import ProductPublic
-from typing import List
 
 router = APIRouter()
 db: Session = next(get_db())
@@ -13,7 +13,7 @@ db: Session = next(get_db())
 async def list_users(db: Session = Depends(get_db)):
     return UserRepository(db).list_users()
 
-@router.get('/{id}', status_code=status.HTTP_200_OK, response_model=UserPublic)
+@router.get('/{id}', status_code=status.HTTP_200_OK, response_model=UserProfile)
 async def get_user(id: str, db: Session = Depends(get_db)):
     return UserRepository(db).get_user(id)
 
