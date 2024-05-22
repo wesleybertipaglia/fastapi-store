@@ -2,35 +2,39 @@
 
 Some things to do:
 
+## Next steps
+- [ ] Implement items in order (new entity)
+- [ ] Change database from SQLite to PostgreSQL
+- [ ] Implement unit tests
+
 ## Database
 - [ ] Change database from SQLite to PostgreSQL
 - [ ] Create a migration system
 - [ ] Create a seed system
 
 ## Routes
-- [ ] Add pagination, limit, offset to endpoints
 - [ ] Add cache to endpoints
 - [ ] Add logs to the application
+- [ ] Implement search and filters
 
 ## Entities
 
 ### Users
-- [ ] Implement roles and permissions to users
+- [ ] Add address (new entity)
+- [ ] Add payment methods (new entity)
 
 ### Products
-- [ ] Add stock, category, tags, images to products
-- [ ] Implement reviews and rating to products
-- [ ] Implement search and filter to products
+- [ ] Add category  (new entity)
+- [ ] Implement reviews and rating to products (new entity)
 
 ### Orders
-- [ ] Implement payment methods
-- [ ] Add discont cupon, promotion
-- [ ] tax, fee, shipping, total
-- [ ] Implement order status
-- [ ] Implement items in order
+- [ ] Implement items in order (new entity)
+- [ ] Implement payment methods (new entity)
+- [ ] Implement shipping (new entity)
+- [ ] Add discont cupon, promotion (new entity)
+- [ ] Implement order status (new entity)
 
 ## Tests
-- [ ] Create tests for the application
 - [ ] Implement unit tests
 - [ ] Implement integration tests
 - [ ] Implement end-to-end tests

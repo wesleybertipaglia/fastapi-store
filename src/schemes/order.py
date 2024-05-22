@@ -6,6 +6,7 @@ class Order(BaseModel):
     user_id: str
     product_id: str
     quantity: int
+    tax: Optional[float] = None
     total: Optional[float] = None
 
     class Config:
