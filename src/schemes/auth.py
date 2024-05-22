@@ -3,7 +3,7 @@ from typing import Optional
 
 class SignUP(BaseModel):
     id: Optional[str] = None
-    name: str
+    username: str
     email: str
     password: str
 
@@ -17,10 +17,8 @@ class SignIN(BaseModel):
     class Config:
         orm_mode = True
 
-class UserResponse(BaseModel):
-    id: str
-    name: str
-    email: str
+class Delete(BaseModel):
+    password: str
 
     class Config:
         orm_mode = True

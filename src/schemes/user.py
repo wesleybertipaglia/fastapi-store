@@ -3,24 +3,17 @@ from typing import Optional
 
 class User(BaseModel):
     id: Optional[str] = None
-    name: str
+    username: Optional[str]
     email: str
     password: str
 
     class Config:
         orm_mode = True
 
-class UserUpdate(BaseModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-    password: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-
 class UserPrivate(BaseModel):
     id: Optional[str] = None
-    name: str
+    username: Optional[str]
+    name: Optional[str] = None
     email: str
 
     class Config:
@@ -28,7 +21,8 @@ class UserPrivate(BaseModel):
 
 class UserPublic(BaseModel):
     id: Optional[str] = None
-    name: str
-
+    username: Optional[str] = None
+    name: Optional[str] = None
+    
     class Config:
         orm_mode = True
