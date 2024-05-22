@@ -10,8 +10,10 @@ class ProductModel(Base):
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'))
     name: Mapped[str] = mapped_column(String(100))
     description: Mapped[str] = mapped_column(String(255))
+    image_url: Mapped[str] = mapped_column(String(255))
     price: Mapped[float] = mapped_column(Float)
     available: Mapped[bool] = mapped_column(Boolean)
+    stock: Mapped[int] = mapped_column(Integer)
 
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='products')
     orders: Mapped['OrderModel'] = relationship('OrderModel', back_populates='product')
