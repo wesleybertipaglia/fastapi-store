@@ -3,7 +3,7 @@
 Some things to do:
 
 ## Next steps
-- [ ] Implement shipping and payment method in order (new entity)
+- [ ] Implement shipping to order (new entity)
 - [ ] Change database from SQLite to PostgreSQL
 - [ ] Implement unit tests
 
@@ -19,19 +19,13 @@ Some things to do:
 
 ## Entities
 
-### Users
-- [ ] Add address (new entity)
-- [ ] Add payment methods (new entity)
-
 ### Products
 - [ ] Add category  (new entity)
 - [ ] Implement reviews and rating to products (new entity)
 
 ### Orders
-- [ ] Implement payment methods (new entity)
 - [ ] Implement shipping (new entity)
 - [ ] Add discont cupon (new entity)
-- [ ] Implement order status (new entity)
 
 ## Tests
 - [ ] Implement unit tests

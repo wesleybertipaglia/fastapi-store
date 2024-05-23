@@ -2,12 +2,7 @@ import uvicorn
 from fastapi import FastAPI, Request, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from src.config.database import create_db
-from src.routes.user import router as user_router
-from src.routes.product import router as product_router
-from src.routes.order import router as order_router
-from src.routes.auth import router as auth_router
-from src.routes.profile import router as profile_router
-from src.routes.payment import router as payment_router
+from src.routes import *
 from src.middlewares.timer import time_middleware
 from src.jobs.notification import send_email as send_email_job
 
@@ -41,6 +36,7 @@ app.include_router(user_router, prefix='/users')
 app.include_router(product_router, prefix='/products')
 app.include_router(order_router, prefix='/orders')
 app.include_router(payment_router, prefix='/payments')
+app.include_router(address_router, prefix='/addresses')
 
 # middlewares
 @app.middleware("http")

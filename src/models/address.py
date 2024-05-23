@@ -12,6 +12,7 @@ class AddressModel(Base):
     city: Mapped[str] = mapped_column(String, nullable=False)
     state: Mapped[str] = mapped_column(String, nullable=False)
     zip_code: Mapped[str] = mapped_column(String, nullable=False)
-    
+    country: Mapped[str] = mapped_column(String, nullable=False)
+
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='addresses')
-    order_shipping: Mapped['OrderShippingModel'] = relationship('OrderShippingModel', back_populates='address')    
+    order_shipping: Mapped['OrderShippingModel'] = relationship('OrderShippingModel', back_populates='address')
