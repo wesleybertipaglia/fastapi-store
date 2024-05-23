@@ -4,6 +4,7 @@ from typing import Optional
 class Order(BaseModel):
     id: Optional[str] = None
     user_id: str
+    payment_method_id: Optional[str] = None
     status: str
     total_products: Optional[int] = 0
     tax: Optional[float] = 0.0
@@ -12,7 +13,6 @@ class Order(BaseModel):
 
     class Config:
         orm_mode = True
-
 
 class OrderList(BaseModel):
     id: Optional[str] = None
@@ -27,10 +27,11 @@ class OrderList(BaseModel):
 
 class OrderUpdate(BaseModel):
     status: str
-    total_products: int
+    total_products: int    
     tax: Optional[float] = 0.0
     total: Optional[float] = None
     items: Optional[list] = None
+    payment_method_id: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -46,8 +47,10 @@ class OrderItem(BaseModel):
         orm_mode = True
 
 class OrderCreate(BaseModel):
-    status: Optional[str] = "pending"
+    status: Optional[str] = "processing"
     items: list[OrderItem]
+    payment_method_id: Optional[str] = None
+    payment_status: Optional[str] = "pending"
 
     class Config:
         orm_mode = True

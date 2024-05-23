@@ -14,7 +14,7 @@ class UserModel (Base):
     bio: Mapped[str] = mapped_column(String(100), nullable=True)
     avatar: Mapped[str] = mapped_column(String(100), nullable=True)
     phone: Mapped[str] = mapped_column(String(15), nullable=True)
-    address: Mapped[str] = mapped_column(String(100), nullable=True)
-
+    
+    payment_methods: Mapped['PaymentMethodModel'] = relationship('PaymentMethodModel', back_populates='user')
     products: Mapped['ProductModel'] = relationship('ProductModel', back_populates='user')
     orders: Mapped['OrderModel'] = relationship('OrderModel', back_populates='user')

@@ -1,7 +1,8 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from src.schemes.order import Order, OrderCreate, OrderUpdate, OrderItem
-from src.models.order import OrderModel, OrderItemsModel
+from src.models.order import OrderModel, OrderItemsModel, OrderPaymentModel
+from src.models.payment import PaymentMethodModel
 from src.repository.product import ProductRepository
 
 class OrderRepository():
@@ -9,12 +10,10 @@ class OrderRepository():
         self.db = db    
     
     def list_orders(self, user_id: str, skip: int, limit: int):
-        print(user_id, skip, limit)
         try:
             return self.db.query(OrderModel).filter(OrderModel.user_id == user_id).offset(skip).limit(limit).all()
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"An error occurred while fetching orders: {e}.")
-
 
     def get_order(self, id: str, user_id: str):
         stored_order = self.db.query(OrderModel).filter(OrderModel.id == id).first()
@@ -44,6 +43,13 @@ class OrderRepository():
         )
         self.db.add(new_order)
         self.db.flush()
+
+        new_payment = OrderPaymentModel(
+            order_id=new_order.id,
+            payment_method_id=order.payment_method_id,
+            status=order.payment_status
+        )
+        self.db.add(new_payment)
 
         for item in order.items:
             stored_product =  ProductRepository(self.db).get_product(item.product_id)

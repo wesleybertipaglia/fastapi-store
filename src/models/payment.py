@@ -13,4 +13,4 @@ class PaymentMethodModel(Base):
     type: Mapped[str] = mapped_column(String, nullable=False, )
     
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='payment_methods')
-    orders: Mapped['OrderModel'] = relationship('OrderModel', back_populates='payment_method')
+    order_payment: Mapped['OrderPaymentModel'] = relationship('OrderPaymentModel', back_populates='payment_method')

@@ -7,6 +7,7 @@ from src.routes.product import router as product_router
 from src.routes.order import router as order_router
 from src.routes.auth import router as auth_router
 from src.routes.profile import router as profile_router
+from src.routes.payment import router as payment_router
 from src.middlewares.timer import time_middleware
 from src.jobs.notification import send_email as send_email_job
 
@@ -39,6 +40,7 @@ app.include_router(profile_router, prefix='/profile')
 app.include_router(user_router, prefix='/users')
 app.include_router(product_router, prefix='/products')
 app.include_router(order_router, prefix='/orders')
+app.include_router(payment_router, prefix='/payments')
 
 # middlewares
 @app.middleware("http")

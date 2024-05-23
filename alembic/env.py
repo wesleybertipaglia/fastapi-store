@@ -3,9 +3,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 from src.config.database import Base
-from src.models.user import UserModel
-from src.models.product import ProductModel
-from src.models.order import OrderModel
+from src.models import *
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
