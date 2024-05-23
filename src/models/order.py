@@ -14,7 +14,7 @@ class OrderModel(Base):
     total: Mapped[float] = mapped_column(Float, nullable=False)
 
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='orders')
-    order_items: Mapped['OrderItemsModel'] = relationship('OrderItemsModel', back_populates='order')    
+    order_items: Mapped['OrderItemsModel'] = relationship('OrderItemsModel', back_populates='order')
 
 class OrderItemsModel(Base):
     __tablename__ = 'order_items'
