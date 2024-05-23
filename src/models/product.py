@@ -7,13 +7,13 @@ class ProductModel(Base):
     __tablename__ = 'products'
     
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'))
-    name: Mapped[str] = mapped_column(String(100))
-    description: Mapped[str] = mapped_column(String(255))
-    image_url: Mapped[str] = mapped_column(String(255))
-    price: Mapped[float] = mapped_column(Float)
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'), nullable=False)
+    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    description: Mapped[str] = mapped_column(String(255), nullable=True)
+    image_url: Mapped[str] = mapped_column(String(255), nullable=True)
+    price: Mapped[float] = mapped_column(Float, nullable=False)
     available: Mapped[bool] = mapped_column(Boolean)
-    stock: Mapped[int] = mapped_column(Integer)
+    stock: Mapped[int] = mapped_column(Integer, nullable=False)
 
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='products')
-    orders: Mapped['OrderModel'] = relationship('OrderModel', back_populates='product')
+    orders: Mapped['OrderItemsModel'] = relationship('OrderItemsModel', back_populates='product')

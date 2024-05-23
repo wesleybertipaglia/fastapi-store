@@ -3,48 +3,51 @@ from typing import Optional
 
 class Product(BaseModel):
     id: Optional[str] = None
+    user_id: Optional[str] = None
     name: str
-    description: str
+    description: Optional[str] = None
     image_url: Optional[str] = None
     price: float
-    available: bool = False
-    stock: int = 0
-    user_id: Optional[str] = None
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
 
     class Config:
         orm_mode = True
 
 class ProductUpdate(BaseModel):
+    user_id: Optional[str] = None
     name: Optional[str] = None
     description: Optional[str] = None
     image_url: Optional[str] = None
     price: Optional[float] = None
     available: Optional[bool] = None
     stock: Optional[int] = None
-    user_id: Optional[str] = None
 
     class Config:
         orm_mode = True
 
 class ProductPublic(BaseModel):
     id: Optional[str] = None
+    user_id: Optional[str] = None
     name: str
-    price: float
     description: Optional[str] = None
     image_url: Optional[str] = None
+    price: float
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
 
     class Config:
         orm_mode = True
 
 class ProductPrivate(BaseModel):
     id: Optional[str] = None
+    user_id: Optional[str] = None
     name: str
-    description: str
+    description: Optional[str] = None
     image_url: Optional[str] = None
     price: float
-    available: bool = False
-    stock: int = 0
-    user_id: str
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
 
     class Config:
         orm_mode = True
