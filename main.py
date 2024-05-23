@@ -27,7 +27,7 @@ app.add_middleware(
 
 @app.get('/')
 def home():
-    return 'Welcome to blx API 🎉'
+    return 'Welcome to store API 🎉'
 
 # routes
 app.include_router(auth_router, prefix='/auth')
