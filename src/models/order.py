@@ -16,6 +16,7 @@ class OrderModel(Base):
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='orders')
     order_items: Mapped['OrderItemsModel'] = relationship('OrderItemsModel', back_populates='order')
     order_payment: Mapped['OrderPaymentModel'] = relationship('OrderPaymentModel', back_populates='order')
+    order_shipping: Mapped['OrderShippingModel'] = relationship('OrderShippingModel', back_populates='order')
 
 class OrderItemsModel(Base):
     __tablename__ = 'order_items'
@@ -39,3 +40,16 @@ class OrderPaymentModel(Base):
 
     order: Mapped['OrderModel'] = relationship('OrderModel', back_populates='order_payment')
     payment_method: Mapped['PaymentMethodModel'] = relationship('PaymentMethodModel', back_populates='order_payment')
+
+class OrderShippingModel(Base):
+    __tablename__ = 'order_shipping'
+    
+    id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
+    order_id: Mapped[str] = mapped_column(String, ForeignKey('orders.id'))
+    address_id: Mapped[str] = mapped_column(String, ForeignKey('addresses.id'))
+    tracking_number: Mapped[str] = mapped_column(String, nullable=True)
+    status: Mapped[str] = mapped_column(String, nullable=False)
+    note: Mapped[str] = mapped_column(String, nullable=True)
+
+    order: Mapped['OrderModel'] = relationship('OrderModel', back_populates='order_shipping')
+    address: Mapped['AddressModel'] = relationship('AddressModel', back_populates='order_shipping')
