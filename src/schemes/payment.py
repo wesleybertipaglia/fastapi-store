@@ -11,15 +11,6 @@ class PaymentMethod(BaseModel):
     class Config:
         orm_mode = True
 
-class PaymentMethodUpdate(BaseModel):
-    user_id: Optional[str] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-    type: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-
 class PaymentMethodList(BaseModel):
     id: Optional[str] = None
     name: Optional[str] = None
@@ -28,8 +19,24 @@ class PaymentMethodList(BaseModel):
     class Config:
         orm_mode = True
 
-class PaymentMethodGet(BaseModel):
+class PaymentMethodSingle(BaseModel):
     id: Optional[str] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
+    type: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+class PaymentMethodCreate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    type: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+class PaymentMethodUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     type: Optional[str] = None

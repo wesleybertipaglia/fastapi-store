@@ -1,37 +1,37 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-from src.schemes.user import User
 from src.schemes.profile import ProfileUpdate
 from src.schemes.auth import SignUP
 from src.models.user import UserModel
-from src.models.product import ProductModel
 from src.providers.hash import Hash
 
 class UserRepository():
     def __init__(self, db: Session):
         self.db = db
     
-    def list_users(self, skip: int, limit: int):
+    def list(self, skip: int, limit: int):
         return self.db.query(UserModel).offset(skip).limit(limit).all()
 
-    def get_user(self, id: str):
+    def get(self, id: str):
         stored_user = self.db.query(UserModel).filter(UserModel.id == id).first()
+        
         if not stored_user:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(status_code=404, detail="Not found")
+        
         return stored_user
     
-    def get_user_by_email(self, email: str):
+    def get_by_email(self, email: str):
         return self.db.query(UserModel).filter(UserModel.email == email).first()
     
-    def get_user_by_username(self, username: str):
+    def get_by_username(self, username: str):
         return self.db.query(UserModel).filter(UserModel.username == username).first()
 
-    def create_user(self, user: SignUP):
-        if self.get_user_by_username(user.username):
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username already registered.")
+    def create(self, user: SignUP):
+        if self.get_by_username(user.username):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username already registered")
         
-        if self.get_user_by_email(user.email):
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered.")
+        if self.get_by_email(user.email):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
         new_user = UserModel(
             username=user.username,
@@ -44,15 +44,15 @@ class UserRepository():
         self.db.refresh(new_user)
         return new_user 
     
-    def update_user(self, id: str, user: ProfileUpdate):
-        stored_user = self.get_user(id)
+    def update(self, id: str, user: ProfileUpdate):
+        stored_user = self.get(id)
 
         if user.email and user.email != stored_user.email:
-            if self.get_user_by_email(user.email):
+            if self.get_by_email(user.email):
                 raise HTTPException(status_code=400, detail="Email already registered")
             
         if user.username and user.username != stored_user.username:
-            if self.get_user_by_username(user.username):
+            if self.get_by_username(user.username):
                 raise HTTPException(status_code=400, detail="Username already registered")
             
         if user.password:
@@ -65,12 +65,12 @@ class UserRepository():
         self.db.refresh(stored_user)
         return stored_user
 
-    def delete_user(self, id: str, password: str):        
-        stored_user = self.get_user(id)
+    def delete(self, id: str, password: str):        
+        stored_user = self.get(id)
         
         if not Hash.verify(stored_user.password, password):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid password")
         
         self.db.delete(stored_user)
         self.db.commit()
-        return {"detail": "User deleted"}
+        return {"detail": "Resource deleted successfully"}

@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Float, ForeignKey, String
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from src.config.database import Base
 from uuid import uuid4

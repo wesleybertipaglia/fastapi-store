@@ -10,19 +10,19 @@ class User(BaseModel):
     class Config:
         orm_mode = True
 
-class UserPrivate(BaseModel):
+class UserList(BaseModel):
     id: Optional[str] = None
     username: Optional[str]
     name: Optional[str] = None
-    email: str
 
     class Config:
         orm_mode = True
 
-class UserPublic(BaseModel):
+class UserSingle(BaseModel):
     id: Optional[str] = None
     username: Optional[str] = None
     name: Optional[str] = None
+    email: Optional[str] = None    
     
     class Config:
         orm_mode = True

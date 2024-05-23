@@ -14,6 +14,43 @@ class Product(BaseModel):
     class Config:
         orm_mode = True
 
+class ProductList(BaseModel):
+    id: Optional[str] = None
+    user_id: Optional[str] = None
+    name: str
+    description: Optional[str] = None
+    image_url: Optional[str] = None
+    price: float
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
+
+    class Config:
+        orm_mode = True
+
+class ProductSingle(BaseModel):
+    id: Optional[str] = None
+    user_id: Optional[str] = None
+    name: str
+    description: Optional[str] = None
+    image_url: Optional[str] = None
+    price: float
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
+
+    class Config:
+        orm_mode = True
+
+class ProductCreate(BaseModel):
+    name: str
+    description: Optional[str] = None
+    image_url: Optional[str] = None
+    price: float
+    available: Optional[bool] = False
+    stock: Optional[int] = 0
+
+    class Config:
+        orm_mode = True
+
 class ProductUpdate(BaseModel):
     user_id: Optional[str] = None
     name: Optional[str] = None
@@ -22,32 +59,6 @@ class ProductUpdate(BaseModel):
     price: Optional[float] = None
     available: Optional[bool] = None
     stock: Optional[int] = None
-
-    class Config:
-        orm_mode = True
-
-class ProductPublic(BaseModel):
-    id: Optional[str] = None
-    user_id: Optional[str] = None
-    name: str
-    description: Optional[str] = None
-    image_url: Optional[str] = None
-    price: float
-    available: Optional[bool] = False
-    stock: Optional[int] = 0
-
-    class Config:
-        orm_mode = True
-
-class ProductPrivate(BaseModel):
-    id: Optional[str] = None
-    user_id: Optional[str] = None
-    name: str
-    description: Optional[str] = None
-    image_url: Optional[str] = None
-    price: float
-    available: Optional[bool] = False
-    stock: Optional[int] = 0
 
     class Config:
         orm_mode = True

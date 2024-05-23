@@ -13,6 +13,25 @@ class Address(BaseModel):
     class Config:
         orm_mode = True
 
+class AddressList(BaseModel):
+    id: Optional[str] = None
+    address: Optional[str] = None
+    zip_code: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+class AddressSingle(BaseModel):
+    id: Optional[str] = None
+    address: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip_code: Optional[str] = None
+    country: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        
 class AddressCreate(BaseModel):
     address: Optional[str] = None
     city: Optional[str] = None
@@ -25,25 +44,6 @@ class AddressCreate(BaseModel):
 
 class AddressUpdate(BaseModel):
     user_id: Optional[str] = None
-    address: Optional[str] = None
-    city: Optional[str] = None
-    state: Optional[str] = None
-    zip_code: Optional[str] = None
-    country: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-
-class AddressList(BaseModel):
-    id: Optional[str] = None
-    address: Optional[str] = None
-    zip_code: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-
-class AddressGet(BaseModel):
-    id: Optional[str] = None
     address: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None

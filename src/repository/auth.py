@@ -2,7 +2,6 @@ from fastapi import HTTPException, Depends, status
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer
 from src.schemes.auth import SignIN, SignUP
-from src.schemes.profile import Profile
 from src.models.user import UserModel
 from src.repository.user import UserRepository
 from src.providers.hash import Hash
@@ -16,10 +15,10 @@ class AuthRepository():
         self.user_repository = UserRepository(db)
 
     def sign_in(self, user: SignIN):
-        stored_user = self.user_repository.get_user_by_email(user.email)
+        stored_user = self.user_repository.get_by_email(user.email)
         
         if not stored_user:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not found")
         if not Hash.verify(stored_user.password, user.password):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid password")
         
@@ -27,7 +26,7 @@ class AuthRepository():
         return {"access_token": token, "token_type": "bearer"}
     
     def sign_up(self, user: SignUP):
-        return UserRepository(self.db).create_user(user)
+        return UserRepository(self.db).create(user)
     
     def sign_out(self, token: str = Depends(oauth2_scheme)):
         token = Token().revoke_access_token(token)
@@ -35,10 +34,10 @@ class AuthRepository():
         
     def get_current_user(self, token: str = Depends(oauth2_scheme)):
         email = Token().verify_token(token)
-        user_data: UserModel = self.user_repository.get_user_by_email(email)
+        user_data: UserModel = self.user_repository.get_by_email(email)
         
         if not user_data:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not found")
 
         return user_data
     
