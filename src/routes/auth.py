@@ -2,14 +2,14 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 from src.config.database import get_db
 from src.schemes.auth import SignUP, SignIN, Delete
-from src.schemes.user import UserPrivate
+from src.schemes.user import UserPublic
 from src.repository.auth import AuthRepository
 from src.repository.user import UserRepository
 
 router = APIRouter()
 db: Session = next(get_db())
 
-@router.post('/up', status_code=status.HTTP_201_CREATED, response_model=UserPrivate)
+@router.post('/up', status_code=status.HTTP_201_CREATED, response_model=UserPublic)
 async def sign_up(user: SignUP):
     return AuthRepository(db).sign_up(user)
 

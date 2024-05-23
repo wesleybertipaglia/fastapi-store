@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Profile(BaseModel):
+    id: Optional[str] = None
     username: Optional[str] = None
     name: Optional[str] = None
     email: Optional[str] = None

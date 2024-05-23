@@ -27,8 +27,7 @@ class AuthRepository():
         return {"access_token": token, "token_type": "bearer"}
     
     def sign_up(self, user: SignUP):
-        new_user = UserRepository(self.db).create_user(user)        
-        return Profile(**new_user.__dict__)
+        return UserRepository(self.db).create_user(user)
     
     def sign_out(self, token: str = Depends(oauth2_scheme)):
         token = Token().revoke_access_token(token)
