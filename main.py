@@ -35,6 +35,7 @@ app.include_router(profile_router, prefix='/profile')
 app.include_router(user_router, prefix='/users')
 app.include_router(product_router, prefix='/products')
 app.include_router(order_router, prefix='/orders')
+app.include_router(sales_router, prefix='/sales')
 app.include_router(payment_router, prefix='/payments')
 app.include_router(address_router, prefix='/addresses')
 

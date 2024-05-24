@@ -17,8 +17,9 @@ class Order(BaseModel):
 
 class OrderItem(BaseModel):
     id: Optional[str] = None
-    order_id: Optional[str] = None
+    order_id: str
     product_id: str
+    seller_id: str
     quantity: Optional[int] = 1
     total: Optional[float] = None
 
@@ -27,6 +28,7 @@ class OrderItem(BaseModel):
 
 class OrderPayment(BaseModel):
     id: Optional[str] = None
+    order_id: str
     payment_method_id: str
     status: Optional[str] = "pending"
 
@@ -35,6 +37,7 @@ class OrderPayment(BaseModel):
 
 class OrderShipping(BaseModel):
     id: Optional[str] = None
+    order_id: str
     address_id: str
     tracking_number: Optional[str] = None
     status: Optional[str] = "pending"
