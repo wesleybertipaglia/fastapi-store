@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-from src.schemes.profile import ProfileUpdate
+from src.schemes.user import UserUpdate
 from src.schemes.auth import SignUP
 from src.models.user import UserModel
 from src.providers.hash import Hash
@@ -44,7 +44,7 @@ class UserRepository():
         self.db.refresh(new_user)
         return new_user 
     
-    def update(self, id: str, user: ProfileUpdate):
+    def update(self, id: str, user: UserUpdate):
         stored_user = self.get(id)
 
         if user.email and user.email != stored_user.email:
