@@ -89,7 +89,7 @@ The following checklist can be used to track the project progress:
 - [x] Authorization
 - [x] Documentation
 - [ ] Tests
-- [ ] Docker
+- [x] Docker
 - [ ] CI/CD
 - [ ] Deploy
 - [ ] Monitoring
