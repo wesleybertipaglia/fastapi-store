@@ -4,7 +4,7 @@ Some things to do:
 
 ## Next steps
 - [ ] Change database from SQLite to PostgreSQL
-- [ ] Implement unit tests
+- [x] Implement unit tests
 - [ ] Create a seed system
 - [ ] Create a micro frontend
 
