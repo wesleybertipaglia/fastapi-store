@@ -16,31 +16,53 @@ Some things to do:
 - [ ] Add logs to the application
 - [ ] Implement search and filters
 
-## Entities
+## Security
+- [ ] Implement rate limit to endpoints
+- [x] Implement JWT to endpoints
+- [x] Implement OAuth to endpoints
+- [x] Implement CORS to endpoints
 
-### Products
-- [ ] Add category  (new entity)
-- [ ] Implement reviews and rating to products (new entity)
+## Middlewares
+- [ ] Implement rate limit middleware
+- [ ] Implement logs middleware
+- [ ] Implement cache middleware
 
-### Orders
-- [ ] Add discont cupon (new entity)
+## Services
+- [ ] Implement email service
+- [ ] Implement SMS service
+- [ ] Implement push notification service
 
 ## Tests
 - [ ] Implement unit tests
 - [ ] Implement integration tests
 - [ ] Implement end-to-end tests
 
-## Notifications
-- [ ] Add notifications to users
-- [ ] Implement email notifications
-- [ ] Implement SMS notifications
-- [ ] Implement push notifications
+## Entities
+
+### Users
+- [ ] Implement roles for users
+- [x] Implement permissions for users
+- [ ] Implement settings for users
+
+### Products
+- [ ] Implement reviews and rating to products (new entity)
+- [ ] Implement categories for products (new entity)
+- [ ] Implement discount for products (new entity)
+
+### Orders
+- [ ] Add discont cupon (new entity)
+- [ ] Implement status for orders (new entity)
+- [ ] Implement reviews for orders (new entity)
+- [ ] Implement discount for orders (new entity)
+
+### Notifications
+- [ ] Implement notifications for orders (new order, order status, etc)
+- [ ] Implement notifications for products (out of stock, new product, etc)
 
 ## Frontend
-- [ ] Create a micro frontend for the application
-- [ ] Implement a login / register page
-- [ ] Implement a home page
-- [ ] Implement a profile / settings page
-- [ ] Implement a orders / order page
-- [ ] Implement a products / product page
-- [ ] Implement a cart / checkout page
+- [ ] Create a login / register page
+- [ ] Create a home page
+- [ ] Create a profile / settings page
+- [ ] Create a orders / order page
+- [ ] Create a products / product page
+- [ ] Create a cart / checkout page
