@@ -9,9 +9,9 @@ class OrderModel(Base):
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
     user_id: Mapped[str] = mapped_column(String, ForeignKey('users.id'))
     status: Mapped[str] = mapped_column(String, nullable=False, default='pending')
-    total_products: Mapped[int] = mapped_column(Integer, nullable=False)
+    total_products: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     tax: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
-    total: Mapped[float] = mapped_column(Float, nullable=False)
+    total: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
 
     user: Mapped['UserModel'] = relationship('UserModel', back_populates='orders')
     order_items: Mapped['OrderItemsModel'] = relationship('OrderItemsModel', back_populates='order')

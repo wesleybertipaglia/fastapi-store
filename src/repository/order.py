@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-from src.schemes.order import Order, OrderCreate, OrderUpdate, OrderItem
+from src.schemes.order import Order, OrderCreate, OrderUpdate, OrderItem, OrderSingle, OrderPayment, OrderShipping
 from src.models.order import OrderModel, OrderItemsModel, OrderPaymentModel, OrderShippingModel
 from src.repository.product import ProductRepository
 
@@ -22,22 +22,42 @@ class OrderRepository():
         if stored_order.user_id != user_id:
             raise HTTPException(status_code=403, detail="You don't have permission to view this resource")
         
-        stored_order_items = self.db.query(OrderItemsModel).filter(OrderItemsModel.order_id == id).all()
-        order_items = [OrderItem(**item.__dict__) for item in stored_order_items]
-        order = Order(**stored_order.__dict__)
-        order.items = order_items
+        payment = self.db.query(OrderPaymentModel).filter(OrderPaymentModel.order_id == id).first()
+        shipping = self.db.query(OrderShippingModel).filter(OrderShippingModel.order_id == id).first()
+
+        if payment:
+            payment = OrderPayment(**payment.__dict__)        
+
+        if shipping:
+            shipping = OrderShipping(**shipping.__dict__)
         
-        return order
+        stored_order_items = self.db.query(OrderItemsModel).filter(OrderItemsModel.order_id == id).all()
+        order_items = [OrderItem(**item.__dict__) for item in stored_order_items]        
+        return OrderSingle(**stored_order.__dict__, items=order_items, payment=payment, shipping=shipping)
     
     def create(self, user_id: str, order: OrderCreate):
         total, total_products = 0, 0
         
-        new_order = OrderModel(**order.model_dump(exclude_unset=True), user_id=user_id)
-        self.db.add(new_order)
-        self.db.flush()
+        new_order = OrderModel(
+            user_id=user_id,
+            status=order.status,
+            total_products=0,
+            total=0.0
+        )
+        
+        if new_order:
+            self.db.add(new_order)
+            self.db.flush()
+        else:
+            raise HTTPException(status_code=400, detail="An error occurred while creating the order")
 
-        new_payment = OrderPaymentModel(**order.model_dump(exclude_unset=True), order_id=new_order.id)
-        self.db.add(new_payment)
+        if order.shipping:
+            new_shipping = OrderShippingModel(**order.shipping.model_dump(), order_id=new_order.id)
+            self.db.add(new_shipping)
+        
+        if order.payment:
+            new_payment = OrderPaymentModel(**order.payment.model_dump(), order_id=new_order.id)
+            self.db.add(new_payment)
 
         for item in order.items:
             stored_product =  ProductRepository(self.db).get(item.product_id)
