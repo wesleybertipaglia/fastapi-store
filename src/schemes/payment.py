@@ -9,7 +9,7 @@ class PaymentMethod(BaseModel):
     type: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaymentMethodList(BaseModel):
     id: Optional[str] = None
@@ -17,7 +17,7 @@ class PaymentMethodList(BaseModel):
     type: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaymentMethodSingle(BaseModel):
     id: Optional[str] = None
@@ -26,7 +26,7 @@ class PaymentMethodSingle(BaseModel):
     type: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaymentMethodCreate(BaseModel):
     name: Optional[str] = None
@@ -34,7 +34,7 @@ class PaymentMethodCreate(BaseModel):
     type: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaymentMethodUpdate(BaseModel):
     name: Optional[str] = None
@@ -42,4 +42,4 @@ class PaymentMethodUpdate(BaseModel):
     type: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

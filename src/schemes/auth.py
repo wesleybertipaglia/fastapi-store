@@ -6,19 +6,23 @@ class SignUP(BaseModel):
     username: str
     email: str
     password: str
+    name: Optional[str] = None    
+    bio: Optional[str] = None
+    avatar: Optional[str] = None
+    phone: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SignIN(BaseModel):
     email: str
     password: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Delete(BaseModel):
     password: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True

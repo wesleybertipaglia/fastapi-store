@@ -12,7 +12,7 @@ class Product(BaseModel):
     stock: Optional[int] = 0
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ProductList(BaseModel):
     id: Optional[str] = None
@@ -25,7 +25,7 @@ class ProductList(BaseModel):
     stock: Optional[int] = 0
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ProductSingle(BaseModel):
     id: Optional[str] = None
@@ -38,7 +38,7 @@ class ProductSingle(BaseModel):
     stock: Optional[int] = 0
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ProductCreate(BaseModel):
     name: str
@@ -49,7 +49,7 @@ class ProductCreate(BaseModel):
     stock: Optional[int] = 0
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ProductUpdate(BaseModel):
     user_id: Optional[str] = None
@@ -61,4 +61,4 @@ class ProductUpdate(BaseModel):
     stock: Optional[int] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

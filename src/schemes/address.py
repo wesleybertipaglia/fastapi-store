@@ -11,7 +11,7 @@ class Address(BaseModel):
     country: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AddressList(BaseModel):
     id: Optional[str] = None
@@ -19,7 +19,7 @@ class AddressList(BaseModel):
     zip_code: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AddressSingle(BaseModel):
     id: Optional[str] = None
@@ -30,7 +30,7 @@ class AddressSingle(BaseModel):
     country: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         
 class AddressCreate(BaseModel):
     address: Optional[str] = None
@@ -40,7 +40,7 @@ class AddressCreate(BaseModel):
     country: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AddressUpdate(BaseModel):
     user_id: Optional[str] = None
@@ -51,4 +51,4 @@ class AddressUpdate(BaseModel):
     country: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

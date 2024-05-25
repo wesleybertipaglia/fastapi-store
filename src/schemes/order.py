@@ -13,7 +13,7 @@ class Order(BaseModel):
     items: Optional[list] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderItem(BaseModel):
     id: Optional[str] = None
@@ -24,7 +24,7 @@ class OrderItem(BaseModel):
     total: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderPayment(BaseModel):
     id: Optional[str] = None
@@ -33,7 +33,7 @@ class OrderPayment(BaseModel):
     status: Optional[str] = "pending"
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderShipping(BaseModel):
     id: Optional[str] = None
@@ -44,7 +44,7 @@ class OrderShipping(BaseModel):
     note: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderList(BaseModel):
     id: Optional[str] = None
@@ -53,7 +53,7 @@ class OrderList(BaseModel):
     total: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderSingle(BaseModel):
     id: Optional[str] = None
@@ -66,7 +66,7 @@ class OrderSingle(BaseModel):
     shipping: Optional[OrderShipping] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderCreate(BaseModel):
     status: Optional[str] = "processing"
@@ -75,7 +75,7 @@ class OrderCreate(BaseModel):
     payment: Optional[OrderPayment] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderUpdate(BaseModel):
     status: str
@@ -87,4 +87,4 @@ class OrderUpdate(BaseModel):
     shipping_id: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

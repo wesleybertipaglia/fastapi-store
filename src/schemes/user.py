@@ -8,7 +8,7 @@ class User(BaseModel):
     password: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserList(BaseModel):
     id: Optional[str] = None
@@ -16,7 +16,7 @@ class UserList(BaseModel):
     name: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserSingle(BaseModel):
     id: Optional[str] = None
@@ -29,7 +29,7 @@ class UserSingle(BaseModel):
     address: Optional[str] = None   
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserUpdate(BaseModel):
     name: Optional[str] = None
@@ -42,4 +42,4 @@ class UserUpdate(BaseModel):
     address: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
