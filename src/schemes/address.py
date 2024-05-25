@@ -33,6 +33,7 @@ class AddressSingle(BaseModel):
         from_attributes = True
         
 class AddressCreate(BaseModel):
+    id: Optional[str] = None
     address: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None

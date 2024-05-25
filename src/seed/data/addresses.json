@@ -1,0 +1,92 @@
+[
+    {
+        "id": "cf2ae32e-809d-466a-a0ce-586cb5d356b2",
+        "user_id": "885d8986-6e52-4eb8-a985-2640b7ac7569",
+        "address": "362 Tennyson Hill",
+        "city": "Saint Louis",
+        "state": "Missouri",
+        "zip_code": "63158",
+        "country": "United States"
+    },
+    {
+        "id": "612bc215-e3d9-4a5f-97b5-92898e6dbd78",
+        "user_id": "e2788ce6-08c3-461b-8023-2d94cd00b54d",
+        "address": "10856 Lakewood Circle",
+        "city": "Tampa",
+        "state": "Florida",
+        "zip_code": "33633",
+        "country": "United States"
+    },
+    {
+        "id": "03013e35-5a5c-42b5-a5fc-13bfe7268b4c",
+        "user_id": "f497115a-ebe9-4804-91be-cedda232bea7",
+        "address": "0 Hanson Alley",
+        "city": "Dulles",
+        "state": "Virginia",
+        "zip_code": "20189",
+        "country": "United States"
+    },
+    {
+        "id": "a945788f-3b2a-40a2-a4df-30e43911bb73",
+        "user_id": "4d436487-1a6b-439a-8a8a-cb3b22433e53",
+        "address": "099 Claremont Circle",
+        "city": "Hartford",
+        "state": "Connecticut",
+        "zip_code": "06120",
+        "country": "United States"
+    },
+    {
+        "id": "f0e05b23-ee51-4a4a-a9a7-ea74f6b73689",
+        "user_id": "50c2489f-8d81-4aab-9366-46ea17a1c7d5",
+        "address": "40476 Forest Run Junction",
+        "city": "Niagara Falls",
+        "state": "Ontario",
+        "zip_code": "L2J",
+        "country": "Canada"
+    },
+    {
+        "id": "bd181a14-7241-4e18-b5a5-f7fe18aa0360",
+        "user_id": "83a77d63-7ad8-4f87-bc73-602df7323819",
+        "address": "52 Loomis Way",
+        "city": "Assiniboia",
+        "state": "Saskatchewan",
+        "zip_code": "H3C",
+        "country": "Canada"
+    },
+    {
+        "id": "8f1dbdbd-6014-4f40-b31a-f3915ee602c3",
+        "user_id": "24669147-042f-49b9-a45f-2c86d448f8f0",
+        "address": "791 Doe Crossing Point",
+        "city": "Cedar Rapids",
+        "state": "Iowa",
+        "zip_code": "52405",
+        "country": "United States"
+    },
+    {
+        "id": "f2259a9c-e98a-4196-80ad-4f20836c56ce",
+        "user_id": "739978d7-c420-4dbd-aba7-e1fa1964b943",
+        "address": "3844 Ridgeview Avenue",
+        "city": "Grand Rapids",
+        "state": "Michigan",
+        "zip_code": "49505",
+        "country": "United States"
+    },
+    {
+        "id": "971f9b35-7b1e-494b-827d-d672958818a4",
+        "user_id": "cfac1c0f-2392-4ec3-8e8a-7dc066390a62",
+        "address": "1 Boyd Point",
+        "city": "El Paso",
+        "state": "Texas",
+        "zip_code": "79934",
+        "country": "United States"
+    },
+    {
+        "id": "ecb87da4-87d2-4ead-9070-a5d33ff247fb",
+        "user_id": "8134a624-f506-44ec-9984-cff14489e2ad",
+        "address": "721 Center Terrace",
+        "city": "Birmingham",
+        "state": "Alabama",
+        "zip_code": "35231",
+        "country": "United States"
+    }
+]
