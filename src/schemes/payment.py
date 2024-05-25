@@ -29,6 +29,7 @@ class PaymentMethodSingle(BaseModel):
         from_attributes = True
 
 class PaymentMethodCreate(BaseModel):
+    id: Optional[str] = None
     name: Optional[str] = None
     description: Optional[str] = None
     type: Optional[str] = None
