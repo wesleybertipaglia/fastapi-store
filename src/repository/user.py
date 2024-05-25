@@ -33,16 +33,17 @@ class UserRepository():
         if self.get_by_email(user.email):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
-        new_user = UserModel(
-            username=user.username,
-            email=user.email,
-            password=Hash.bcrypt(user.password)
-        )
-
-        self.db.add(new_user)
-        self.db.commit()
-        self.db.refresh(new_user)
-        return new_user 
+        try:
+            new_user = UserModel(**user.model_dump(exclude_unset=True, exclude={"password"}), password=Hash.bcrypt(user.password))
+            self.db.add(new_user)
+            self.db.commit()
+            self.db.refresh(new_user)
+            return new_user
+        except Exception as e:
+            self.db.rollback()
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Error: {e}")
+        finally:
+            self.db.close()
     
     def update(self, id: str, user: UserUpdate):
         stored_user = self.get(id)
