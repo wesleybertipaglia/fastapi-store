@@ -17,9 +17,9 @@ class Order(BaseModel):
 
 class OrderItem(BaseModel):
     id: Optional[str] = None
-    order_id: str
-    product_id: str
-    seller_id: str
+    order_id: Optional[str] = None
+    product_id: Optional[str] = None
+    seller_id: Optional[str] = None
     quantity: Optional[int] = 1
     total: Optional[float] = None
 
@@ -28,7 +28,6 @@ class OrderItem(BaseModel):
 
 class OrderPayment(BaseModel):
     id: Optional[str] = None
-    order_id: str
     payment_method_id: str
     status: Optional[str] = "pending"
 
@@ -37,8 +36,7 @@ class OrderPayment(BaseModel):
 
 class OrderShipping(BaseModel):
     id: Optional[str] = None
-    order_id: str
-    address_id: str
+    address_id: Optional[str] = None
     tracking_number: Optional[str] = None
     status: Optional[str] = "pending"
     note: Optional[str] = None
@@ -48,8 +46,8 @@ class OrderShipping(BaseModel):
 
 class OrderList(BaseModel):
     id: Optional[str] = None
-    user_id: str
-    status: str
+    user_id: Optional[str] = None
+    status: Optional[str] = None
     total: Optional[float] = None
 
     class Config:
@@ -57,7 +55,7 @@ class OrderList(BaseModel):
 
 class OrderSingle(BaseModel):
     id: Optional[str] = None
-    status: str
+    status: Optional[str] = None
     total_products: Optional[int] = 0
     tax: Optional[float] = 0.0
     total: Optional[float] = None
@@ -69,6 +67,7 @@ class OrderSingle(BaseModel):
         from_attributes = True
 
 class OrderCreate(BaseModel):
+    id: Optional[str] = None
     status: Optional[str] = "processing"
     items: list[OrderItem]
     shipping: Optional[OrderShipping] = None

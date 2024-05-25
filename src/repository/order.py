@@ -68,7 +68,12 @@ class OrderRepository():
             stored_product.stock -= item.quantity
             self.db.refresh(stored_product)
 
-            new_order_item = OrderItemsModel(**item.model_dump(exclude_unset=True), order_id=new_order.id, total=item.quantity * stored_product.price)
+            new_order_item = OrderItemsModel(
+                **item.model_dump(exclude_unset=True), 
+                order_id=new_order.id, 
+                seller_id=stored_product.user_id, 
+                total=item.quantity * stored_product.price
+            )
             self.db.add(new_order_item)
 
             total += new_order_item.total

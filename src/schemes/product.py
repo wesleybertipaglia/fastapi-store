@@ -41,6 +41,7 @@ class ProductSingle(BaseModel):
         from_attributes = True
 
 class ProductCreate(BaseModel):
+    id: Optional[str] = None
     name: str
     description: Optional[str] = None
     image_url: Optional[str] = None
