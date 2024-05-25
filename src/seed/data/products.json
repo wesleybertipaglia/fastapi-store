@@ -1,0 +1,102 @@
+[
+    {
+        "id": "950f7d07-2366-4a5b-9ded-d850c1223885",
+        "user_id": "885d8986-6e52-4eb8-a985-2640b7ac7569",
+        "name": "Bread - Roll, Calabrese",
+        "description": "Aliquam quis turpis eget elit sodales scelerisque.",
+        "image_url": "http://dummyimage.com/242x249.png/cc0000/ffffff",
+        "price": 2.76,
+        "available": false,
+        "stock": 43
+    },
+    {
+        "id": "df4b5b94-0872-4f63-9263-4b9b2610372e",
+        "user_id": "8134a624-f506-44ec-9984-cff14489e2ad",
+        "name": "Nut - Pecan, Pieces",
+        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",
+        "image_url": "http://dummyimage.com/195x101.png/ff4444/ffffff",
+        "price": 8.38,
+        "available": false,
+        "stock": 68
+    },
+    {
+        "id": "1f861e62-cca7-4a4b-a543-24236f91ebf8",
+        "user_id": "cfac1c0f-2392-4ec3-8e8a-7dc066390a62",
+        "name": "Beans - Black Bean, Dry",
+        "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+        "image_url": "http://dummyimage.com/184x178.png/ff4444/ffffff",
+        "price": 3.13,
+        "available": false,
+        "stock": 50
+    },
+    {
+        "id": "af1c1988-e129-4af3-9163-b52b050301ba",
+        "user_id": "739978d7-c420-4dbd-aba7-e1fa1964b943",
+        "name": "Bread - Olive Dinner Roll",
+        "description": "Etiam vel augue. Vestibulum rutrum rutrum neque.",
+        "image_url": "http://dummyimage.com/246x148.png/dddddd/000000",
+        "price": 7.81,
+        "available": false,
+        "stock": 56
+    },
+    {
+        "id": "b297e861-5699-45a1-9270-5d48899b86d9",
+        "user_id": "24669147-042f-49b9-a45f-2c86d448f8f0",
+        "name": "Sweet Pea Sprouts",
+        "description": "Aliquam quis turpis eget elit sodales scelerisque.",
+        "image_url": "http://dummyimage.com/125x214.png/ff4444/ffffff",
+        "price": 7.69,
+        "available": true,
+        "stock": 69
+    },
+    {
+        "id": "cce8f239-cd18-4796-a25a-749388dfc3e6",
+        "user_id": "83a77d63-7ad8-4f87-bc73-602df7323819",
+        "name": "Oyster - In Shell",
+        "description": "Duis consequat dui nec nisi volutpat eleifend.",
+        "image_url": "http://dummyimage.com/101x180.png/ff4444/ffffff",
+        "price": 9.80,
+        "available": true,
+        "stock": 74
+    },
+    {
+        "id": "a476bebd-42b3-48fb-844c-7d11e217cc05",
+        "user_id": "4d436487-1a6b-439a-8a8a-cb3b22433e53",
+        "name": "Milk Powder",
+        "description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
+        "image_url": "http://dummyimage.com/228x171.png/cc0000/ffffff",
+        "price": 8.00,
+        "available": true,
+        "stock": 16
+    },
+    {
+        "id": "a37b80c7-a966-4b5b-88ee-b88d750585e0",
+        "user_id": "50c2489f-8d81-4aab-9366-46ea17a1c7d5",
+        "name": "Wine - Redchard Merritt",
+        "description": "Nulla ut erat id mauris vulputate elementum.",
+        "image_url": "http://dummyimage.com/208x232.png/ff4444/ffffff",
+        "price": 3.22,
+        "available": true,
+        "stock": 96
+    },
+    {
+        "id": "1afc58a1-9d85-498a-ae7f-9db414076e25",
+        "user_id": "f497115a-ebe9-4804-91be-cedda232bea7",
+        "name": "Wine - Stoneliegh Sauvignon",
+        "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+        "image_url": "http://dummyimage.com/179x120.png/ff4444/ffffff",
+        "price": 8.08,
+        "available": false,
+        "stock": 47
+    },
+    {
+        "id": "1fa1f48a-70cd-48f3-acb1-338fea5d14f0",
+        "user_id": "e2788ce6-08c3-461b-8023-2d94cd00b54d",
+        "name": "Barramundi",
+        "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+        "image_url": "http://dummyimage.com/161x153.png/ff4444/ffffff",
+        "price": 4.05,
+        "available": false,
+        "stock": 44
+    }
+]
