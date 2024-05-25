@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 from src.config.database import get_db
 
-from .UserSeeder import UserSeeder
-from .PaymentMethodSeeder import PaymentMethodSeeder
-from .AddressSeeder import AddressSeeder
-from .ProductSeeder import ProductSeeder
-from .OrderSeeder import OrderSeeder
+from src.seed.UserSeeder import UserSeeder
+from src.seed.PaymentMethodSeeder import PaymentMethodSeeder
+from src.seed.AddressSeeder import AddressSeeder
+from src.seed.ProductSeeder import ProductSeeder
+from src.seed.OrderSeeder import OrderSeeder
 
 def main():
     db_gen = get_db()

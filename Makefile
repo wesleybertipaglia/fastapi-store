@@ -24,6 +24,10 @@ compose-up:
 compose-down:
 	@docker compose down
 
+# Database
+db-init:
+	@python3 db_init.py
+
 # Alembic
 alembic-init:
 	@alembic init alembic
