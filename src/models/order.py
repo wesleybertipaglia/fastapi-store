@@ -23,7 +23,7 @@ class OrderItemsModel(Base):
     
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
     order_id: Mapped[str] = mapped_column(String, ForeignKey('orders.id'))
-    product_id: Mapped[int] = mapped_column(Integer, ForeignKey('products.id'))
+    product_id: Mapped[str] = mapped_column(String, ForeignKey('products.id'))
     seller_id: Mapped[str] = mapped_column(String, ForeignKey('users.id'))
     quantity: Mapped[int] = mapped_column(Integer, nullable=False)
     total: Mapped[float] = mapped_column(Float, nullable=False)

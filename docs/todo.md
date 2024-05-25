@@ -3,7 +3,7 @@
 Some things to do:
 
 ## Next steps
-- [ ] Change database from SQLite to PostgreSQL
+- [x] Change database from SQLite to PostgreSQL
 - [x] Implement unit tests
 - [ ] Create a seed system
 - [ ] Create a micro frontend
@@ -35,7 +35,7 @@ Some things to do:
 - [ ] Implement push notification service
 
 ## Tests
-- [ ] Implement unit tests
+- [x] Implement unit tests
 - [ ] Implement integration tests
 - [ ] Implement end-to-end tests
 

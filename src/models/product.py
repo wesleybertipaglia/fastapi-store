@@ -7,7 +7,7 @@ class ProductModel(Base):
     __tablename__ = 'products'
     
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True, default=lambda: str(uuid4()))
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'), nullable=False)
+    user_id: Mapped[str] = mapped_column(String, ForeignKey('users.id'), nullable=False)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
     description: Mapped[str] = mapped_column(String(255), nullable=True)
     image_url: Mapped[str] = mapped_column(String(255), nullable=True)

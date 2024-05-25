@@ -8,7 +8,7 @@ activate:
 setup:	
 	@pip3 install -r requirements.txt
 
-freeze:
+requirements:
 	@pip3 freeze > requirements.txt
 
 run:	
@@ -18,10 +18,10 @@ test:
 	@pytest
 
 # Docker
-docker-compose-up:
+compose-up:
 	@docker compose up -d
 
-docker-compose-down:
+compose-down:
 	@docker compose down
 
 # Alembic

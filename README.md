@@ -77,7 +77,7 @@ To know more about the endpoints, check the [endpoints.md](/docs/endpoints.md) f
 ## 🧩 Tech Stack
 - [Python](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
-- [SQLite](https://www.sqlite.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 To know more about the tech stack, check the [stack.md](/docs/stack.md) file.
 
