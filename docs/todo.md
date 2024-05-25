@@ -3,15 +3,12 @@
 Some things to do:
 
 ## Next steps
-- [x] Change database from SQLite to PostgreSQL
-- [x] Implement unit tests
-- [ ] Create a seed system
 - [ ] Create a micro frontend
 
 ## Database
-- [ ] Change database from SQLite to PostgreSQL
+- [x] Change database from SQLite to PostgreSQL
 - [x] Create a migration system
-- [ ] Create a seed system
+- [x] Create a seed system
 
 ## Routes
 - [ ] Add cache to endpoints
